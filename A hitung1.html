@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <title> Uts itu menyenangkan >> Dede Herdiana </title>
+</head>
+
+<body bgcolor="blue">
+    <script language="JavaScript">
+        function hitung() {
+            var nama = (document.dedeform.inama.value);
+            var alamat = (document.dedeform.ialamat.value);
+            var kode = (document.dedeform.ikode.value);
+            var lama = parseFloat(document.dedeform.ilama.value);
+
+            var um = 0.0;
+            var tarif = 0.0;
+            var bayar = 0.0;
+            var diskon = 0.0;
+            var totbay = 0.0;
+
+            if (kode == "A") {
+                tarif = 150000;
+            } else if (kode == "B") {
+                tarif = 200000;
+            } else if (kode == "C") {
+                tarif = 350000;
+            } else {
+                tarif = 500000;
+            }
+
+            if (kode == "A") {
+                um = 15000;
+            } else if (kode == "B") {
+                um = 20000;
+            } else if (kode == "C") {
+                um = 35000;
+            } else {
+                um = 50000;
+            }
+
+            if (lama > 7) {
+                diskon = 0.05 * tarif;
+            } else {
+                diskon = 0.0;
+            }
+            tarif = tarif - diskon;
+
+            bayar = tarif * lama + um;
+            ppn = 0.1 * bayar;
+            totbay = ppn + bayar;
+
+            document.dedeform.onama.value = nama;
+            document.dedeform.obayar.value = eval(bayar);
+            document.dedeform.odiskon.value = eval(diskon);
+            document.dedeform.oppn.value = eval(ppn);
+            document.dedeform.total.value = eval(totbay);
+        }
+    </script>
+
+    <form name="dedeform">
+        <pre>
+ Nama  : <input type="text" name="inama">
+ Alamat  : <input type="text" name="ialamat">
+ Kode kamar : <input type="text" name="ikode">
+ Lama  : <input type="text" name="ilama">
+ <input type="button" value ="kirim" OnClick="hitung()"> <input type="reset" value ="reset">
+
+ <hr>
+ <center><h1> Output</h1> </center>
+ Selamat Anda telah memesan kamar dengan rincian biaya di bawah ini:
+ Nama  : <input type="text" name="onama">
+ Bayar  : <input type="text" name="obayar"> 
+ Diskon  : <input type="text" name="odiskon">
+ PPN  : <input type="text" name="oppn">
+ Total   : <input type="text" name="total">
+ </pre>
+    </form>
+</body>
+
+</html>

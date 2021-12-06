@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function hargakmr() {
+            form.harga.value = form.kamar.value;
+        }
+
+        function totalharga() {
+            if (form.kamar) {
+                form.total.value = parseInt(form.harga.value) * parseInt(form.hari.value);
+            }
+            if (form.meetingroom) {
+                form.totroom.value = parseInt(form.haroom.value) * parseInt(form.hrroom.value);
+            }
+            if (form.extrabed) {
+                form.totbed.value = parseInt(form.habed.value) * parseInt(form.hrbed.value);
+            }
+            if (form.airpanas) {
+                form.totair.value = parseInt(form.haair.value) * parseInt(form.hrair.value);
+            }
+            if (form.brutto) {
+                form.brutto.value = parseInt(form.total.value) + parseInt(form.totroom.value) +
+                    parseInt(form.totbed.value) + parseInt(form.totair.value);
+            }
+            if (form.netto) {
+                form.netto.value = parseInt(form.brutto.value) - parseInt(form.potongharga.value);
+            }
+            if (form.jujul) {
+                form.jujul.value = parseInt(form.jumbar.value) - parseInt(form.netto.value);
+            }
+        }
+
+        function room() {
+            form.haroom.value = form.meetingroom.value;
+        }
+
+        function bed() {
+            form.habed.value = form.extrabed.value;
+        }
+
+        function air() {
+            form.haair.value = form.airpanas.value;
+        }
+
+        function hitungdiskon() {
+            if (form.diskon[0].checked) {
+                form.potongharga.value = parseInt(form.brutto.value) * parseFloat(form.diskon[0].value);
+            }
+            if (form.diskon[1].checked) {
+                form.potongharga.value = parseInt(form.brutto.value) * parseFloat(form.diskon[1].value);
+            }
+            if (form.diskon[2].checked) {
+                form.potongharga.value = parseInt(form.brutto.value) * parseFloat(form.diskon[2].value);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <table border="1" align="center" style="text-align: center;">
+        <tr>
+            <td>Jenis Kamar</td>
+            <td>Harga</td>
+            <td>Banyak Hari</td>
+            <td>Total Harga</td>
+        </tr>
+        <form name="form">
+            <tr>
+                <td>
+                    <select name="kamar" onchange="hargakmr()">
+                        <option value="0">Pilih Kamar</option>
+                        <option value="350000">STANDART</option>
+                        <option value="750000">VIP</option>
+                        <option value="1000000">PRESIDENT</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="harga" disabled value="0">
+                </td>
+                <td>
+                    <input type="text" name="hari" onkeyup="totalharga()" value="0">
+                </td>
+                <td>
+                    <input type="text" name="total" value="0" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">FASILITAS TAMBAHAN YANG DI GUNAKAN</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="meetingroom" value="2000000" onchange="room()">Meeting Room
+                </td>
+                <td>
+                    <input type="text" name="haroom" value="0" disabled>
+                </td>
+                <td>
+                    <input type="text" name="hrroom" onkeyup="totalharga()" value="0">
+                </td>
+                <td>
+                    <input type="text" name="totroom" value="0" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="extrabed" value="200000" onchange="bed()">Extra bad
+                </td>
+                <td>
+                    <input type="text" name="habed" value="0" disabled>
+                </td>
+                <td>
+                    <input type="text" name="hrbed" onkeyup="totalharga()" value="0">
+                </td>
+                <td>
+                    <input type="text" name="totbed" value="0" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="airpanas" value="250" onchange="air()">Air Panas
+                </td>
+                <td>
+                    <input type="text" name="haair" value="0" disabled>
+                </td>
+                <td>
+                    <input type="text" name="hrair" onkeyup="totalharga()" value="0">
+                </td>
+                <td>
+                    <input type="text" name="totair" value="0" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">Pembayaran</td>
+            </tr>
+            <tr>
+                <td colspan="3">Total Biaya/Baruto</td>
+                <td>
+                    <input type="text" name="brutto" value="0" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">Diskon <input type="radio" name="diskon" value="0"
+                        onchange="hitungdiskon(); totalharga();"> No Diskon
+                    <input type="radio" name="diskon" value="0.1" onchange="hitungdiskon(); totalharga();">Diskon 10%
+                    <input type="radio" name="diskon" value="0.2" onchange="hitungdiskon(); totalharga();">Diskon 20%
+                </td>
+                <td>
+                    <input type="text" name="potongharga" value="0" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">Netto</td>
+                <td>
+                    <input type="text" name="netto" value="0" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">Pembayaran</td>
+                <td>
+                    <input type="text" name="jumbar" onkeyup="totalharga();" value="0">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">Kembali</td>
+                <td>
+                    <input type="text" name="jujul" value="0" disabled>
+                </td>
+            </tr>
+        </form>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tutor Belajar JavaScript</title>
+
+    <script>
+        function tampilkan() {
+            var nama_barang = document.getElementById("form1").select1.value;
+
+
+            if (nama_barang == "tissue") {
+                document.getElementById("box").innerHTML = "Harga <b>Rp 10.000</b>";
+            } else if (nama_barang == "gula") {
+                document.getElementById("box").innerHTML = "Harga <b>Rp 15.000</b>";
+            } else if (nama_barang == "beras") {
+                document.getElementById("box").innerHTML = "Harga <b>Rp 60.000</b>";
+            } else if (nama_barang == "sabun") {
+                document.getElementById("box").innerHTML = "Harga <b>Rp 20.000</b>";
+            } else if (nama_barang == "terigu") {
+                document.getElementById("box").innerHTML = "Harga <b>Rp 35.000</b>";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Daftar Harga</h2>
+    <form id="form1" name="form2" onsubmit="return false">
+        <label for="select"> Pilih jenis barang:</label>
+        <select id="select1" name="select2">
+            <option value="tissue">tissue</option>
+            <option value="gula">gula</option>
+            <option value="beras">beras</option>
+            <option value="sabun">sabun</option>
+            <option value="beras">beras</option>
+        </select>
+        <input type="submit" value="Harga" onclick="tampilkan();">
+    </form>
+
+    <p id="box"></p>
+
+
+</body>
+
+</html>

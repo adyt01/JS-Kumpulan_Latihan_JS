@@ -1,0 +1,121 @@
+<html>
+
+<head>
+    <title> Tugas 5 Dede Herdiana </title>
+</head>
+
+<body>
+    <script language="JavaScript">
+        function totalbayar() {
+            var tipe_kamar = (document.form.tp_kamar.value);
+            var jenis_tmp_tidur = (document.form.jns_tp_tidur.value);
+            var lama_sewa = parseFloat(document.form.lma_sewa.value);
+
+            var harga = 0.0;
+            var sub = 0.0;
+            var diskon = 0.0;
+            var totbay = 0.0;
+
+            if ((tipe_kamar == "Standard") && (jenis_tmp_tidur == "Single")) {
+                harga = 100000;
+            } else if ((tipe_kamar == "Standard") && (jenis_tmp_tidur == "Double")) {
+                harga = 150000;
+            } else
+
+            if ((tipe_kamar == "Suite") && (jenis_tmp_tidur == "Single")) {
+                harga = 200000;
+            } else if ((tipe_kamar == "Suite") && (jenis_tmp_tidur == "Double")) {
+                harga = 300000;
+            } else
+
+            if ((tipe_kamar == "Deluxe") && (jenis_tmp_tidur == "Single")) {
+                harga = 300000;
+            } else if ((tipe_kamar == "Deluxe") && (jenis_tmp_tidur == "Double")) {
+                harga = 400000;
+            } else
+
+            if ((tipe_kamar == "President") && (jenis_tmp_tidur == "Single")) {
+                harga = 750000;
+            } else if ((tipe_kamar == "President") && (jenis_tmp_tidur == "Double")) {
+                harga = 1000000;
+            }
+
+            sub = harga * lama_sewa;
+
+            if (lama_sewa >= 5) {
+                diskon = 0.01 * harga;
+            } else {
+                diskon = 0.0;
+            }
+            diskon = harga - diskon;
+            totbay = sub - diskon;
+
+            document.form.oharga.value = eval(harga);
+            document.form.osub.value = eval(sub);
+            document.form.odiskon.value = eval(diskon);
+            document.form.ototbay.value = eval(totbay);
+        }
+    </script>
+    <form name="form">
+        <table border="1" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <h2> Bintang Abadi </h2>
+                </td>
+            </tr>
+            <tr>
+                <td>Tujuan : </td>
+                <td>
+                    <select name="tp_kamar" size=1>
+                        <option value="Standard"> Standard </option>
+                        <option value="Suite"> Suite </option>
+                        <option value="Deluxe"> Deluxe </option>
+                        <option value="President"> President </option>
+                    </select>
+                </td>
+            <tr>
+                <td>Tujuan : </td>
+                <td>
+                    <select name="jns_tp_tidur" size=1>
+                        <option value="Single"> Single </option>
+                        <option value="Double"> Double </option>
+                </td>
+            </tr>
+            <tr>
+                <td>Lama Sewa : </td>
+                <td>
+                    <input type="text" size="20" name="lma_sewa">
+                </td>
+            </tr>
+            <tr>
+                <td>Harga : </td>
+                <td><input type="text" size="20" name="oharga"> </td>
+            </tr>
+            <tr>
+                <td>Total Sewa : </td>
+                <td><input type="text" size="20" name="osub"> </td>
+            </tr>
+            <tr>
+                <td>Diskon : </td>
+                <td><input type="text" size="20" name="odiskon"> </td>
+            </tr>
+            <tr>
+                <td>Pembayaran : </td>
+                <td><input type="text" size="20" name="ototbay"></pre>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td colspan="2">
+                    <center>
+                        <input type="button" value="hitung" onClick="totalbayar()">
+                        <input type="reset" value="reset">
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

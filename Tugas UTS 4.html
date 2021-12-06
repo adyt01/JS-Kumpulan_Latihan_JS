@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTS Nomor 2</title>
+    <script type="text/javascript">
+        function Jumlahkan(a) {
+            var total = 0;
+            for (var i in a) {
+                total += a[i];
+            }
+            return total;
+        }
+
+        function Rata2(array) {
+            var total = 0;
+            var count = 0;
+            array.forEach(function (item, index) {
+                total += item;
+                count++;
+            });
+            return total / count;
+        }
+
+
+        var numbers = [60, 25, 26, 23, 8, 10, 42, 56, 20, 12, 54, 35, 12, 44, 12];
+        var maximal = Math.max.apply(Math, numbers);
+        var minimal = Math.min.apply(Math, numbers);
+        var jumlah = Jumlahkan(numbers);
+        var nilai_rata2 = Rata2(numbers);
+
+
+
+        document.write("Dari angka-angka ini = " + numbers + "<br/>");
+        document.write("Hasil Jumlahan = " + jumlah + "<br />");
+        document.write("Nilai Rata-Rata = " + nilai_rata2 + "<br />");
+        document.write("Angka yang terbesar adalah  " + maximal + "<br />");
+        document.write("Angka yang terkecil adalah  " + minimal);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
